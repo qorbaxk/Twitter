@@ -1,9 +1,20 @@
-import React from 'react'
+import { authService } from "fBase";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
-}
+  const navigate = useNavigate();
+  //로그아웃
+  const onLogOutClick = () => {
+    authService.signOut();
+    navigate("/");
+  };
 
-export default Profile
+  return (
+    <div>
+      <button onClick={onLogOutClick}>Log Out</button>
+    </div>
+  );
+};
+
+export default Profile;
