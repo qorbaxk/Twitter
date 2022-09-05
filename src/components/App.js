@@ -9,12 +9,14 @@ function App() {
   //유저의 로그인 여부
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [userObj, setUserObj] = useState(null);
 
   useEffect(()=>{
     const auth = getAuth();
     onAuthStateChanged(auth,(user)=>{
       if(user){
         setIsLoggedIn(true);
+        setUserObj(user); //유저 저장
       }else{
         setIsLoggedIn(false);
       }
@@ -24,7 +26,7 @@ function App() {
 
   return (
     <div>
-      {init? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing..."}
+      {init? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}/> : "Initializing..."}
     </div>
   );
 }
