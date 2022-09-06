@@ -12,7 +12,6 @@ const Tweet = ({ tweetObj, isOwner }) => {
   //삭제하기
   const onDeleteClick = async () => {
     const ok = window.confirm("Are you sure you want to delete this tweet?");
-    console.log(ok);
     if (ok) {
       //확인 후 삭제
       await deleteDoc(TweetTextRef);
@@ -39,17 +38,21 @@ const Tweet = ({ tweetObj, isOwner }) => {
     <div>
       {editing ? (
         <>
-          <form onSubmit={onSubmit}>
-            <input
-              type="text"
-              placeholder="Edit your tweet"
-              value={newTweet}
-              required
-              onChange={onChange}
-            />
-            <input type="submit" value="Update Tweet" />
-          </form>
-          <button onClick={toggleEditing}>Cancel</button>
+          {isOwner && (
+            <>
+              <form onSubmit={onSubmit}>
+                <input
+                  type="text"
+                  placeholder="Edit your tweet"
+                  value={newTweet}
+                  required
+                  onChange={onChange}
+                />
+                <input type="submit" value="Update Tweet" />
+              </form>
+              <button onClick={toggleEditing}>Cancel</button>
+            </>
+          )}
         </>
       ) : (
         <>
