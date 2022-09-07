@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { dbService } from "fBase";
+import { dbService, storageService } from "fBase";
 import {
   addDoc,
   collection,
@@ -9,11 +9,13 @@ import {
   doc,
 } from "firebase/firestore";
 import Tweet from "components/Tweet";
+import { ref, uploadString, getDownloadURL } from "@firebase/storage";
+import { v4 } from "uuid";
 
 const Home = ({ userObj }) => {
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
-  const [attachment, setAttachment] = useState();
+  const [attachment, setAttachment] = useState("");
 
   //작성한 트윗 실시간으로 가져오기
   useEffect(() => {
@@ -33,12 +35,32 @@ const Home = ({ userObj }) => {
   //작성한 트윗 DB에 저장
   const onSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      const docRef = await addDoc(collection(dbService, "tweets"), {
+      //사진이 없을때는 empty string으로 대체
+      let attachmentUrl = "";
+
+      //사진이 있을 때는 url 넣어줌
+      if (attachment != "") {
+        const attachmentRef = ref(storageService, `${userObj.uid}/${v4()}`);
+        const response = await uploadString(
+          attachmentRef,
+          attachment,
+          "data_url"
+        );
+        attachmentUrl = await getDownloadURL(response.ref);
+      }
+
+      const tweetObj = {
         text: tweet,
         createdAt: Date.now(),
         creatorId: userObj.uid,
-      });
+        attachmentUrl,
+      };
+
+      await addDoc(collection(dbService, "tweets"), tweetObj);
+      setTweet("");
+      setAttachment("");
     } catch (error) {
       console.error("Error adding document:", error);
     }
