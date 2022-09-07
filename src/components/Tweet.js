@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { dbService } from "fBase";
+import { dbService, storageService } from "fBase";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { deleteObject, ref } from "firebase/storage";
 
 const Tweet = ({ tweetObj, isOwner }) => {
   const [editing, setEditing] = useState(false); //수정모드인지 아닌지
@@ -13,8 +14,12 @@ const Tweet = ({ tweetObj, isOwner }) => {
   const onDeleteClick = async () => {
     const ok = window.confirm("Are you sure you want to delete this tweet?");
     if (ok) {
-      //확인 후 삭제
+      //텍스트 삭제
       await deleteDoc(TweetTextRef);
+      if (tweetObj.attachmentUrl) {
+        //사진 삭제
+        await deleteObject(ref(storageService, tweetObj.attachmentUrl));
+      }
     }
   };
 

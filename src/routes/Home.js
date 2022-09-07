@@ -41,7 +41,7 @@ const Home = ({ userObj }) => {
       let attachmentUrl = "";
 
       //사진이 있을 때는 url 넣어줌
-      if (attachment != "") {
+      if (attachment !== "") {
         const attachmentRef = ref(storageService, `${userObj.uid}/${v4()}`);
         const response = await uploadString(
           attachmentRef,
