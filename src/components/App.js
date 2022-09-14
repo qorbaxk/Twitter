@@ -16,6 +16,7 @@ function App() {
         setIsLoggedIn(true);
         setUserObj({
           displayName: user.displayName,
+          email: user.email,
           uid: user.uid,
           updateProfile: (args) =>
             updateProfile(user, { displayName: user.displayName }),
@@ -33,6 +34,7 @@ function App() {
     const user = authService.currentUser;
     setUserObj({
       displayName: user.displayName,
+      email: user.email,
       uid: user.uid,
       updateProfile: (args) =>
         updateProfile(user, { displayName: user.displayName }),
