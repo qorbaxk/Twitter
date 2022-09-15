@@ -5,17 +5,29 @@ import Home from "../routes/Home";
 import Navigation from "./Navigation";
 import Profile from "routes/Profile";
 
-const AppRouter = ({refreshUser, isLoggedIn, userObj }) => {
+const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
   return (
-    <div>
-      {isLoggedIn && <Navigation userObj={userObj}/>}
+    <div
+      style={{
+        maxWidth: 890,
+        width: "100%",
+        margin: "0 auto",
+        display: "block",
+        justifyContent: "center",
+      }}
+    >
+      {isLoggedIn && <Navigation userObj={userObj} />}
+
       <Routes>
         {isLoggedIn ? (
-          <Route path="/" element={<Home userObj={userObj}/>} />
+          <Route path="/" element={<Home userObj={userObj} />} />
         ) : (
           <Route path="/" element={<Auth />} />
         )}
-        <Route path="/profile" element={<Profile userObj={userObj} refreshUser={refreshUser}/>} />
+        <Route
+          path="/profile"
+          element={<Profile userObj={userObj} refreshUser={refreshUser} />}
+        />
       </Routes>
     </div>
   );
