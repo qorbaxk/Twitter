@@ -32,7 +32,7 @@ form {
   width: 100%;
 }
 
-.nweet-input::placeholder {
+.tweet-input::placeholder {
   color: white;
   opacity: 0.9;
 }
@@ -164,15 +164,15 @@ form {
   font-size: 12px;
 }
 
-/* Nweet */
+/* tweet */
 
-.nweetEdit .formBtn {
+.tweetEdit .formBtn {
   cursor: pointer;
   margin-top: 15px;
   margin-bottom: 5px;
 }
 
-.nweet {
+.tweet {
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: #243447;
@@ -186,17 +186,17 @@ form {
   color: white;
 }
 
-.nweet:first-child {
+.tweet:first-child {
   border-top: none;
 }
 
-.nweet h4 {
+.tweet h4 {
   font-size: 14px;
   line-height: 18px;
   width: 90%;
 }
 
-.nweet img {
+.tweet img {
   max-width: 320px;
   width: 100%;
   height: 100%;
@@ -204,18 +204,18 @@ form {
   margin-top: 15px;
 }
 
-.nweet__actions {
+.tweet__actions {
   position: absolute;
   right: 10px;
   top: 20px;
   color: #8d97a3;
 }
 
-.nweet__actions span {
+.tweet__actions span {
   cursor: pointer;
 }
 
-.nweet__actions span:first-child {
+.tweet__actions span:first-child {
   margin-right: 10px;
 }
 

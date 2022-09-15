@@ -19,7 +19,7 @@ const Navigation = ({ userObj }) => {
             to="/profile"
             style={{
               marginLeft: 30,
-              marginTop:40,
+              marginTop: 40,
               display: "flex",
               flexDirection: "column",
               alignItems: "start",
@@ -28,18 +28,17 @@ const Navigation = ({ userObj }) => {
           >
             <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
             <span style={{ marginTop: 10}}>
-              {userObj.displayName
-                ? `${userObj.displayName}`
-                : "Profile"}
+              {userObj.displayName ? `${userObj.displayName}` : "Profile"}
             </span>
           </Link>
         </li>
-        <li style={{ display:"flex", justifyContent:"center", marginTop:-48}}>
-          <Link to="/" >
+        <li
+          style={{ display: "flex", justifyContent: "center", marginTop: -48 }}
+        >
+          <Link to="/">
             <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
           </Link>
         </li>
-     
       </ul>
     </nav>
   );

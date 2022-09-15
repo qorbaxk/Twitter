@@ -42,12 +42,12 @@ const Tweet = ({ tweetObj, isOwner }) => {
   };
 
   return (
-    <div className="nweet">
+    <div className="tweet">
       {editing ? (
         <>
           {isOwner && (
             <>
-              <form onSubmit={onSubmit} className="container nweetEdit">
+              <form onSubmit={onSubmit} className="container tweetEdit">
                 <input
                   type="text"
                   placeholder="Edit your tweet"
@@ -70,7 +70,7 @@ const Tweet = ({ tweetObj, isOwner }) => {
           <h4>{tweetObj.text}</h4>
           {tweetObj.attachmentUrl && <img src={tweetObj.attachmentUrl} />}
           {isOwner && (
-            <div className="nweet__actions">
+            <div className="tweet__actions">
               <span onClick={onDeleteClick}>
                 <FontAwesomeIcon icon={faTrash} />
               </span>
