@@ -73,6 +73,30 @@ form {
 }
 
 /* Profile Page */
+.profileImage{
+  margin: auto;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.profileImage svg{
+  position: absolute;
+  top: 38px;
+  left: 36px;
+  color: #8493a5;
+}
+
+.avatar{
+  margin: auto;
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border-width: 5px;
+  border-color: #8493a5;
+  border-style: solid;
+}
+
 
 .profileForm {
   border-bottom: 1px solid rgba(255, 255, 255, 0.9);
@@ -188,6 +212,12 @@ form {
 
 .tweet:first-child {
   border-top: none;
+}
+
+.tweet h3{
+  font-size: 15px;
+  font-weight: bolder;
+  
 }
 
 .tweet h4 {

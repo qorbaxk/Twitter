@@ -26,14 +26,27 @@ const Navigation = ({ userObj }) => {
               fontSize: 12,
             }}
           >
-            <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
-            <span style={{ marginTop: 10}}>
+            {userObj.photoURL ? (
+              <img
+                src={userObj.photoURL}
+                width={30}
+                style={{ borderRadius: "50%" }}
+              />
+            ) : (
+              <img
+                src="https://pbs.twimg.com/media/CmpIszlVMAAK1MK.jpg:large"
+                width={30}
+                style={{ borderRadius: "50%" }}
+              />
+            )}
+
+            <span style={{ marginTop: 10 }}>
               {userObj.displayName ? `${userObj.displayName}` : "Profile"}
             </span>
           </Link>
         </li>
         <li
-          style={{ display: "flex", justifyContent: "center", marginTop: -48 }}
+          style={{ display: "flex", justifyContent: "center", marginTop: -55 }}
         >
           <Link to="/">
             <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />

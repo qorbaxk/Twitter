@@ -1,13 +1,23 @@
-import { authService, dbService } from "fBase";
+import { authService, dbService, storageService } from "fBase";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
+import { ref, uploadString, getDownloadURL } from "@firebase/storage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { v4 } from "uuid";
 
 const Profile = ({ refreshUser, userObj }) => {
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
+  const [newProfilePhoto, setNewProfilePhoto] = useState(
+    userObj.photoURL
+      ? userObj.photoURL
+      : "https://pbs.twimg.com/media/CmpIszlVMAAK1MK.jpg:large"
+  );
 
   const navigate = useNavigate();
+
   //로그아웃
   const onLogOutClick = () => {
     authService.signOut();
@@ -31,9 +41,26 @@ const Profile = ({ refreshUser, userObj }) => {
     getMyTweets();
   }, []);
 
+  //프로필 수정
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (userObj.displayName !== newDisplayName) {
+    let profilePhotoUrl = "";
+
+    if(userObj.photoURL !== newProfilePhoto){
+      const profilePhotoRef = ref(storageService, `${userObj.uid}/${v4()}`);
+        const response = await uploadString(
+          profilePhotoRef,
+          newProfilePhoto,
+          "data_url"
+        );
+        profilePhotoUrl = await getDownloadURL(response.ref);
+
+      await updateProfile(authService.currentUser, {
+        photoURL: profilePhotoUrl,
+      });
+      refreshUser();
+    }
+    if (userObj.displayName !== newDisplayName ) {
       await updateProfile(authService.currentUser, {
         displayName: newDisplayName,
       });
@@ -41,6 +68,7 @@ const Profile = ({ refreshUser, userObj }) => {
     }
   };
 
+  //이름 바꾸기
   const onChange = (e) => {
     const {
       target: { value },
@@ -48,17 +76,49 @@ const Profile = ({ refreshUser, userObj }) => {
     setNewDisplayName(value);
   };
 
+  //프로필 사진 업로드
+  const onUploadPhoto = (e) => {
+    const {
+      target: { files },
+    } = e;
+    const theProfile = files[0];
+    const reader = new FileReader();
+    reader.onloadend = (finishedEvent) => {
+      const {
+        currentTarget: { result },
+      } = finishedEvent;
+      setNewProfilePhoto(result);
+    };
+    reader.readAsDataURL(theProfile);
+    console.log("링크",reader);
+  };
+ 
+
   return (
     <div className="container">
       <form onSubmit={onSubmit} className="profileForm">
+        <div className="profileImage">
+          <label htmlFor="file-input">
+            <img src={newProfilePhoto} alt="Avatar" className="avatar" />
+            <FontAwesomeIcon icon={faCamera} size="2x" />
+          </label>
+          <input
+            id="file-input"
+            type="file"
+            onChange={onUploadPhoto}
+            style={{ display: "none" }}
+          />
+        </div>
+
         <input
           type="text"
           autoFocus
-          placeholder="이름 수정"
+          placeholder="이름"
           onChange={onChange}
           value={newDisplayName}
           className="formInput"
         />
+
         <input
           type="submit"
           value="프로필 수정"
