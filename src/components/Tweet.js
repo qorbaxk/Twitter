@@ -41,6 +41,8 @@ const Tweet = ({ tweetObj, isOwner }) => {
     setNewTweet(value);
   };
 
+ 
+
   return (
     <div className="tweet">
       {editing ? (
@@ -67,6 +69,7 @@ const Tweet = ({ tweetObj, isOwner }) => {
         </>
       ) : (
         <>
+          {tweetObj.creatorName && <h4>{tweetObj.creatorName}</h4>}
           <h4>{tweetObj.text}</h4>
           {tweetObj.attachmentUrl && <img src={tweetObj.attachmentUrl} />}
           {isOwner && (
