@@ -41,7 +41,7 @@ const TweetFactory = ({ userObj }) => {
         creatorId: userObj.uid,
         attachmentUrl,
         creatorName: userObj.displayName,
-        
+        creatorImg: userObj.photoURL,
       };
 
       await addDoc(collection(dbService, "tweets"), tweetObj);

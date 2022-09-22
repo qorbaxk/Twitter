@@ -41,8 +41,6 @@ const Tweet = ({ tweetObj, isOwner }) => {
     setNewTweet(value);
   };
 
- 
-
   return (
     <div className="tweet">
       {editing ? (
@@ -69,9 +67,20 @@ const Tweet = ({ tweetObj, isOwner }) => {
         </>
       ) : (
         <>
-          {tweetObj.creatorName && <h3>{tweetObj.creatorName}</h3>}
-          <h4>{tweetObj.text}</h4>
-          {tweetObj.attachmentUrl && <img src={tweetObj.attachmentUrl} />}
+          <div className="tweet_name">
+            <div>
+              {tweetObj.creatorImg && (
+                <img src={tweetObj.creatorImg} id="tweet_stamp" />
+              )}
+            </div>
+
+            <div className="tweet_text">
+              {tweetObj.creatorName && <h3>{tweetObj.creatorName}</h3>}
+              <h4>{tweetObj.text}</h4>
+              {tweetObj.attachmentUrl && <img src={tweetObj.attachmentUrl} />}
+            </div>
+          </div>
+
           {isOwner && (
             <div className="tweet__actions">
               <span onClick={onDeleteClick}>
