@@ -33,8 +33,6 @@ const TweetFactory = ({ userObj }) => {
         attachmentUrl = await getDownloadURL(response.ref);
       }
 
-
-
       const tweetObj = {
         text: tweet,
         createdAt: Date.now(),

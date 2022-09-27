@@ -30,12 +30,14 @@ const Navigation = ({ userObj }) => {
               <img
                 src={userObj.photoURL}
                 width={30}
+                height={30}
                 style={{ borderRadius: "50%" }}
               />
             ) : (
               <img
                 src="https://pbs.twimg.com/media/CmpIszlVMAAK1MK.jpg:large"
                 width={30}
+                height={30}
                 style={{ borderRadius: "50%" }}
               />
             )}

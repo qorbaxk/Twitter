@@ -22,7 +22,6 @@ const Home = ({ userObj }) => {
     });
   }, []);
 
-
   return (
     <div className="container">
       <TweetFactory userObj={userObj} />
@@ -35,7 +34,6 @@ const Home = ({ userObj }) => {
           />
         ))}
       </div>
-      
     </div>
   );
 };

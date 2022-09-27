@@ -11,9 +11,8 @@ function App() {
 
   useEffect(() => {
     const auth = getAuth();
-    
+
     onAuthStateChanged(auth, (user) => {
-      console.log("안에 뭐잇냐",user);
       if (user) {
         setIsLoggedIn(true);
         setUserObj({
@@ -22,7 +21,10 @@ function App() {
           uid: user.uid,
           photoURL: user.photoURL,
           updateProfile: (args) =>
-            updateProfile(user, { displayName: user.displayName, photoURL: user.photoURL, }),
+            updateProfile(user, {
+              displayName: user.displayName,
+              photoURL: user.photoURL,
+            }),
         }); //유저 저장
       } else {
         setIsLoggedIn(false);
@@ -41,7 +43,10 @@ function App() {
       uid: user.uid,
       photoURL: user.photoURL,
       updateProfile: (args) =>
-        updateProfile(user, { displayName: user.displayName, photoURL: user.photoURL, }),
+        updateProfile(user, {
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+        }),
     });
   };
 

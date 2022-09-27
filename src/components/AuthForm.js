@@ -36,7 +36,6 @@ const AuthForm = () => {
         //로그인
         data = await signInWithEmailAndPassword(auth, email, password);
       }
-      console.log(data);
     } catch (error) {
       setError(error.message);
     }
@@ -70,7 +69,7 @@ const AuthForm = () => {
           value={newAccount ? "회원 가입" : "로그인"}
           className="authInput authSubmit"
         />
-        {error  && <span className="authError">{error}</span>}
+        {error && <span className="authError">{error}</span>}
       </form>
       <span onClick={toggleAccount} className="authSwitch">
         {newAccount ? "로그인" : "회원 가입"}

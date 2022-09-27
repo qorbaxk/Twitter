@@ -32,9 +32,7 @@ const Profile = ({ refreshUser, userObj }) => {
       orderBy("createdAt")
     );
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data());
-    });
+    querySnapshot.forEach((doc) => {});
   };
 
   useEffect(() => {
@@ -46,21 +44,21 @@ const Profile = ({ refreshUser, userObj }) => {
     e.preventDefault();
     let profilePhotoUrl = "";
 
-    if(userObj.photoURL !== newProfilePhoto){
+    if (userObj.photoURL !== newProfilePhoto) {
       const profilePhotoRef = ref(storageService, `${userObj.uid}/${v4()}`);
-        const response = await uploadString(
-          profilePhotoRef,
-          newProfilePhoto,
-          "data_url"
-        );
-        profilePhotoUrl = await getDownloadURL(response.ref);
+      const response = await uploadString(
+        profilePhotoRef,
+        newProfilePhoto,
+        "data_url"
+      );
+      profilePhotoUrl = await getDownloadURL(response.ref);
 
       await updateProfile(authService.currentUser, {
         photoURL: profilePhotoUrl,
       });
       refreshUser();
     }
-    if (userObj.displayName !== newDisplayName ) {
+    if (userObj.displayName !== newDisplayName) {
       await updateProfile(authService.currentUser, {
         displayName: newDisplayName,
       });
@@ -90,9 +88,7 @@ const Profile = ({ refreshUser, userObj }) => {
       setNewProfilePhoto(result);
     };
     reader.readAsDataURL(theProfile);
-    console.log("링크",reader);
   };
- 
 
   return (
     <div className="container">
