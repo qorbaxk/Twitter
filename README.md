@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# Twitter 프로젝트
+![실행사진](https://user-images.githubusercontent.com/97217443/192462960-f352175e-dbfd-4b79-b728-1787158fc298.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+트위터처럼 하고 싶은말 및 사진을 트윗할 수 있는 프로그램입니다.<br>
 
-## Available Scripts
+데모 >> https://qorbaxk-twitter.netlify.app/
 
-In the project directory, you can run:
+***
+## 기능
+* 첫 페이지에서 이메일로 회원가입과 로그인을 같이 할 수 있으며, firebase를 이용하여 소셜로그인(google, github) 기능을 추가하였다
+* 로그인시 홈에서 다른 사람들의 트윗들을 볼 수 있다
+* 홈 상단에서 하고싶은 말과 사진을 추가하여 트윗할 수 있다
+* 사진 추가시 내가 추가한 사진을 미리보기로 볼 수 있다
+* 내가 쓴 트윗은 수정 및 삭제가 가능하다
+* 왼쪽상단 프로필 사진을 눌러 나의 닉네임과 프사를 수정할 수 있다
+* 프로필페이지에서 로그아웃이 가능하다
 
-### `npm start`
+## 아쉬운 점
+* 프로필 페이지에서 내가 쓴 트윗만 모아보는 기능을 만들고 싶다
+* 더 나아가 트윗마다 좋아요 및 답글을 남기는 기능 추가하고 싶다
+* 지금은 사진 및 움짤만 올라가는데 영상도 올릴 수 있게 하고 싶다
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 사용한 기술
+* React
+* JavaScript
+* Firebase
