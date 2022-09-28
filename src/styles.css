@@ -328,3 +328,19 @@ form {
   font-size: 12px;
   text-decoration: underline;
 }
+
+
+/*footer*/
+.footer{
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #495462;
+  border-top: 1px solid #495462;
+  padding-top: 30px;
+  height: 50px;
+  position: relative;
+  transform:translateY(-100%);
+  bottom: 0;
+}

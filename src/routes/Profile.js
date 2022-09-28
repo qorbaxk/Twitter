@@ -44,6 +44,15 @@ const Profile = ({ refreshUser, userObj }) => {
     e.preventDefault();
     let profilePhotoUrl = "";
 
+    //닉네임 변경됐을 때
+    if (userObj.displayName !== newDisplayName) {
+      await updateProfile(authService.currentUser, {
+        displayName: newDisplayName,
+      });
+      refreshUser();
+    }
+
+    //사진 변경됐을 때
     if (userObj.photoURL !== newProfilePhoto) {
       const profilePhotoRef = ref(storageService, `${userObj.uid}/${v4()}`);
       const response = await uploadString(
@@ -55,12 +64,6 @@ const Profile = ({ refreshUser, userObj }) => {
 
       await updateProfile(authService.currentUser, {
         photoURL: profilePhotoUrl,
-      });
-      refreshUser();
-    }
-    if (userObj.displayName !== newDisplayName) {
-      await updateProfile(authService.currentUser, {
-        displayName: newDisplayName,
       });
       refreshUser();
     }

@@ -13,9 +13,11 @@ const TweetFactory = ({ userObj }) => {
 
   //작성한 트윗 DB에 저장
   const onSubmit = async (event) => {
-    if (tweet === "") {
+    //텍스트 및 사진이 둘다 없으면 트윗 안 됨
+    if (tweet === "" && attachment === "") {
       return;
     }
+
     event.preventDefault();
 
     try {

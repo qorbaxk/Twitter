@@ -69,7 +69,12 @@ const Tweet = ({ tweetObj, isOwner }) => {
         <>
           <div className="tweet_name">
             <div>
-              {tweetObj.creatorImg && (
+              {tweetObj.creatorImg === null ? (
+                <img
+                  src="https://pbs.twimg.com/media/CmpIszlVMAAK1MK.jpg:large"
+                  id="tweet_stamp"
+                />
+              ) : (
                 <img src={tweetObj.creatorImg} id="tweet_stamp" />
               )}
             </div>

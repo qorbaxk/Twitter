@@ -11,6 +11,9 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
       style={{
         maxWidth: 890,
         width: "100%",
+        height: "auto",
+        minHeight: "100%",
+        paddingBottom:"50px",
         margin: "0 auto",
         display: "block",
         justifyContent: "center",

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AppRouter from "components/Router";
 import { authService } from "fBase";
 import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
+import Footer from "./Footer";
 
 function App() {
   //유저의 로그인 여부
@@ -53,11 +54,14 @@ function App() {
   return (
     <div>
       {init ? (
-        <AppRouter
-          isLoggedIn={isLoggedIn}
-          userObj={userObj}
-          refreshUser={refreshUser}
-        />
+        <>
+          <AppRouter
+            isLoggedIn={isLoggedIn}
+            userObj={userObj}
+            refreshUser={refreshUser}
+          />
+          <Footer />
+        </>
       ) : (
         "로딩중..."
       )}
